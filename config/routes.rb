@@ -1,4 +1,6 @@
 LaptopShop::Application.routes.draw do
+  resources :carts
+
   get "users/new"
 
   get "welcome/home"
