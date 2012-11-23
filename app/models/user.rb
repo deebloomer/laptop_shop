@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
     return user if user && user.authenticated?(password)
   end
   def authenticated?(password)
-    self.hashed_password == encrypt(password + "ruby rocks" + self.user && user.authenticated?.salt)
+    self.hashed_password == encrypt(password + "ruby rocks" + self.salt)
 
   end
 
@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   def encrypt_password
     return if password.blank?
     salt = generate_salt
-    self.hashed_password = encrypt(password + "ruby_rocks" + salt)
+    self.hashed_password = encrypt(password + "ruby_rocks" + self.salt)
   end
   def encrypt(string)
     Digest::SHA1.hexdigest(string)
