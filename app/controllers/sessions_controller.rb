@@ -13,3 +13,4 @@ class SessionsController < ApplicationController
     redirect_to root_path, :notice => "You successfully logged out"
   end
 end
+

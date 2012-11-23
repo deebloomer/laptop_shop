@@ -21,6 +21,12 @@ class CartsController < ApplicationController
     end
   end
 
+  def your_cart
+      redirect_to :action => "show", :id => current_cart.id
+  end
+
+
+
   # GET /carts/new
   # GET /carts/new.json
   def new
@@ -74,9 +80,12 @@ class CartsController < ApplicationController
   def destroy
     @cart = Cart.find(params[:id])
     @cart.destroy
+    session[:cart_id] = nil
 
     respond_to do |format|
-      format.html { redirect_to carts_url }
+      format.html { redirect_to products_url, notice:
+          'Your cart is currently empty' }
+      #format.html { redirect_to carts_url }
       format.json { head :no_content }
     end
   end
