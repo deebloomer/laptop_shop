@@ -10,8 +10,9 @@ class User < ActiveRecord::Base
     user = find_by_email(email)
     return user if user && user.authenticated?(password)
   end
+
   def authenticated?(password)
-    self.hashed_password == encrypt(password + "ruby rocks" + self.salt)
+    self.hashed_password == encrypt(password + "ruby_rocks" + self.salt)
 
   end
 

@@ -14,7 +14,7 @@ LaptopShop::Application.routes.draw do
 
   match '/your_cart' => "carts#your_cart", :as => "your_cart"
   match '/login' => "sessions#new", :as => "login"
-  match '/logout' => "sessions#destory", :as => "logout"
+  match '/logout' => "sessions#destroy", :as => "logout"
 
 
   # The priority is based upon order of creation:

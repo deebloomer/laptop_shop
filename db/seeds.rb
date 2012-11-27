@@ -5,12 +5,31 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Product.create(:name => 'Toshiba Laptop', :description =>'Small, light quick laptop, robust chassis', :price =>'1000.99')
+Product.delete_all
 
-Product.create(:name => 'Apple Macbook Pro', :description=> 'Unibody alu Mac with 4GB memory', :price =>'1500.00')
+Product.create(name: 'WexDubZ1',
+               description: %{
+      'Wexford (Redmond Sq), Oylgate, Enniscorthy, Ferns',
+     },  price: 6.00)
 
-Product.create(:name => 'Lenovo Thinkpad', :description=> 'Like an IBM laptop', :price => '899.99')
+Product.create(name: 'WexDubZ2',
+               description: %{
+                   'Camolin, Gorey, Arklow (Old Dublin Rd)*** ',
+    }, price: 6.00)
 
-Product.create(:name => 'Dell', :description => 'Special Offer', :price => '499.99')
+Product.create(name: 'WexDubZ3',
+               description:%{
+      'Cherrywood / Wyattville Rd (LUAS Grn Line)*, Montrose Hotel (UCD), Lr Merrion St (Davenport Hotel), Georges Quay, O2 Arena (Clarion Hotel), Dublin Airport (Coach Pk Zone 14),
+    },  price: 6.00)
+
+
+Product.create(name: 'WexDubZ1_3',
+               description: %{
+      'Wexford to Dublin',
+    }, price: 15.00)
+
 
 Product.create(:name => 'Sony', :description => 'Huge fancy screen laptop', :price => '2000.99')
+
+Product.create(:name => 'tony', :description => 'Huge NOT SO fancy screen laptop', :price => '2000.99')
+
