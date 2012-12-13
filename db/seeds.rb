@@ -5,31 +5,63 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Product.delete_all
+Route.destroy_all
+Route.create({outbound_code: "DubWex", inbound_code: "WexDub", return_route: true, start: "Dublin Airport", finish: "Wexford"})
+Route.create({outbound_code: "DubCork", inbound_code: "CorkDub", return_route: true, start: "Dublin Airport", finish: "Cork"})
+Route.create({outbound_code: "DubLim", inbound_code: "LimDub", return_route: true, start: "Dublin Airport", finish: "Shannon Airport"})
+Route.create({outbound_code: "DubGal", inbound_code: "GalDub", return_route: true, start: "Dublin Airport", finish: "Galway"})
+Route.create({outbound_code: "DubDgl", inbound_code: "DglDub", return_route: true, start: "Georges Quay", finish: "Annagry"})
+Route.create({outbound_code: "DubDun", inbound_code: "DunDub", return_route: true, start: "Amien Street", finish: "Dundalk"})
 
-Product.create(name: 'WexDubZ1',
-               description: %{
-      'Wexford (Redmond Sq), Oylgate, Enniscorthy, Ferns',
-     },  price: 6.00)
+RouteDetail.destroy_all
+RouteDetail.create({route_id: Route.find_by_outbound_code("DubWex").id, stop_id: 1, stop_name: "Dublin Airport", minutes_from_start: 0, zone_no: 1})
 
-Product.create(name: 'WexDubZ2',
-               description: %{
-                   'Camolin, Gorey, Arklow (Old Dublin Rd)*** ',
-    }, price: 6.00)
+RouteDetail.create({route_id: Route.find_by_outbound_code("DubWex").id, stop_id: 2, stop_name: "Georges Quay", minutes_from_start: 15, zone_no: 1})
 
-Product.create(name: 'WexDubZ3',
-               description:%{
-      'Cherrywood / Wyattville Rd (LUAS Grn Line)*, Montrose Hotel (UCD), Lr Merrion St (Davenport Hotel), Georges Quay, O2 Arena (Clarion Hotel), Dublin Airport (Coach Pk Zone 14),
-    },  price: 6.00)
+RouteDetail.create({route_id: Route.find_by_outbound_code("DubWex").id, stop_id: 3, stop_name: "Kilmacanogue", minutes_from_start: 30, zone_no: 1})
 
+RouteDetail.create({route_id: Route.find_by_outbound_code("DubWex").id, stop_id: 4, stop_name: "Arklow", minutes_from_start: 45, zone_no: 2})
 
-Product.create(name: 'WexDubZ1_3',
-               description: %{
-      'Wexford to Dublin',
-    }, price: 15.00)
+RouteDetail.create({route_id: Route.find_by_outbound_code("DubWex").id, stop_id: 5, stop_name: "Gorey", minutes_from_start: 60, zone_no: 2})
 
+RouteDetail.create({route_id: Route.find_by_outbound_code("DubWex").id, stop_id: 6, stop_name: "Ferns", minutes_from_start: 75, zone_no: 2})
 
-Product.create(:name => 'Sony', :description => 'Huge fancy screen laptop', :price => '2000.99')
+RouteDetail.create({route_id: Route.find_by_outbound_code("DubWex").id, stop_id: 7, stop_name: "Enniscorthy", minutes_from_start: 90, zone_no: 3})
 
-Product.create(:name => 'tony', :description => 'Huge NOT SO fancy screen laptop', :price => '2000.99')
+RouteDetail.create({route_id: Route.find_by_outbound_code("DubWex").id, stop_id: 8, stop_name: "Oilgate", minutes_from_start: 105, zone_no: 3})
 
+RouteDetail.create({route_id: Route.find_by_outbound_code("DubWex").id, stop_id: 9, stop_name: "Wexford", minutes_from_start: 120, zone_no: 3})
+
+RouteSchedule.destroy_all
+RouteSchedule.create({departure_time: "06:00",  stop_id: 1, outbound: false, inbound: true, capacity: 55 })
+# This is the Monday 06:00 services from wex to all stops .
+RouteSchedule.create({departure_time: "07:00",  stop_id: 1, outbound: true, inbound: true, capacity: 55})
+
+RouteSchedule.create({departure_time: "08:00",  stop_id: 1, outbound: false, inbound: true, capacity: 55})
+
+RouteSchedule.create({departure_time: "09:00",  stop_id: 1, outbound: true, inbound: true, capacity: 55})
+
+RouteSchedule.create({departure_time: "10:00",  stop_id: 1, outbound: true, inbound: true, capacity: 55})
+
+RouteSchedule.create({departure_time: "11:00",  stop_id: 1, outbound: true, inbound: true, capacity: 55})
+
+RouteSchedule.create({departure_time: "13:00",  stop_id: 1, outbound: true, inbound: true, capacity: 55})
+
+RouteSchedule.create({departure_time: "15:00",  stop_id: 1, outbound: true, inbound: true, capacity: 55})
+
+RouteSchedule.create({departure_time: "16:00",  stop_id: 1, outbound: true, inbound: false, capacity: 55})
+
+RouteSchedule.create({departure_time: "17:00",  stop_id: 1, outbound: true, inbound: true, capacity: 55 })
+
+RouteSchedule.create({departure_time: "18:00",  stop_id: 1, outbound: true, inbound: false, capacity: 55})
+
+RouteSchedule.create({departure_time: "19:00",  stop_id: 1, outbound: true, inbound: true, capacity: 55 })
+
+RouteSchedule.create({departure_time: "21:00",  stop_id: 1, outbound: true, inbound: true, capacity: 55 })
+
+TicketPrice.destroy_all
+TicketPrice.create({no_of_zones: 1, price: 6})
+
+TicketPrice.create({no_of_zones: 2, price: 12})
+
+TicketPrice.create({no_of_zones: 3, price: 15})
